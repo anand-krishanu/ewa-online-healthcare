@@ -1,5 +1,5 @@
 import React from "react";
-import './Home.css'
+import './SpecialistList.css'
 
 
 const doctors = [
@@ -9,7 +9,7 @@ const doctors = [
     { id: 4, name: "Paul Moliv", specialty: "Dentist", img: "https://i.imgur.com/C4egmYM.jpg", stars: 2 },
 ];
 
-export default function Home() {
+export default function SpecialistList() {
     return (
         <div className="container mt-5 mb-5">
             <div className="row g-2">

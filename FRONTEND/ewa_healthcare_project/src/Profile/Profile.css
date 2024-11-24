@@ -1,0 +1,158 @@
+.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f1f1;
+  }
+  
+  .content {
+    background-color: white;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .content__cover {
+    position: relative;
+    height: 200px;
+    background-color: #3498db;
+  }
+  
+  .content__avatar {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    border: 4px solid white;
+    transform: translateY(-50%);
+    overflow: hidden;
+  }
+  
+  .content__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .content__bull {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    display: flex;
+    gap: 5px;
+  }
+  
+  .content__bull span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+  }
+  
+  .content__actions {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+  }
+  
+  .content__actions a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3498db;
+  }
+  
+  .content__actions svg {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .content__title {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .content__title h1 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .content__title span {
+    color: #888;
+  }
+  
+  .content__description {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .content__buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+  }
+  
+  .content__buttons button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .content__buttons button:hover {
+    background-color: #2980b9;
+  }
+  
+  .content__list {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .content__list li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .content__upload {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .content__upload input {
+    cursor: pointer;
+  }
+  
+  .bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+    font-size: 30px;
+  }
+  
+  .bg span {
+    width: 20px;
+    height: 20px;
+    background-color: #3498db;
+    border-radius: 50%;
+  }
+  
