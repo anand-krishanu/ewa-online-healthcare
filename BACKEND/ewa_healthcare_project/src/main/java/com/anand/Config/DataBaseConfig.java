@@ -17,14 +17,13 @@ import java.util.Properties;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.anand.repository")
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.anand")
 public class DataBaseConfig {
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/userData");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/userdata");
         dataSource.setUsername("root");
         dataSource.setPassword("admin");
         System.out.println("DataSource initialized");
@@ -37,12 +36,14 @@ public class DataBaseConfig {
         emf.setDataSource(dataSource());
         emf.setPackagesToScan("com.anand.Entity");
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        emf.setEntityManagerFactoryInterface(jakarta.persistence.EntityManagerFactory.class);
+//        emf.setEntityManagerFactoryInterface(jakarta.persistence.EntityManagerFactory.class);
 
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         properties.setProperty("hibernate.show_sql", "true");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+
 
         emf.setJpaProperties(properties);
         return emf;
