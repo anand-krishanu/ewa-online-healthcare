@@ -1,17 +1,16 @@
 package com.anand.Entity;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Customer")
-public class Customer {
+@Table(name = "Specialists")
+public class Specialist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private int customerId;
+    @Column(name = "specialist_id")
+    private int specialistId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -19,27 +18,34 @@ public class Customer {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "specialty")
+    private String specialty;
+
+    @Column(name = "bio")
+    private String bio;
+
     @Column(name = "email")
     private String email;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "password_hash")
-    private String passwordHash;
+    @Column(name = "location")
+    private String location;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "working_hours")
+    private String workingHours;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    public int getCustomerId() {
-        return customerId;
+    // Getters and Setters
+    public int getSpecialistId() {
+        return specialistId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setSpecialistId(int specialistId) {
+        this.specialistId = specialistId;
     }
 
     public String getFirstName() {
@@ -58,6 +64,22 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -74,20 +96,20 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getLocation() {
+        return location;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getAddress() {
-        return address;
+    public String getWorkingHours() {
+        return workingHours;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setWorkingHours(String workingHours) {
+        this.workingHours = workingHours;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -98,4 +120,3 @@ public class Customer {
         this.createdAt = createdAt;
     }
 }
-

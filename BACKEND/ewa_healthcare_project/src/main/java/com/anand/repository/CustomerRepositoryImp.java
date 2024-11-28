@@ -13,7 +13,6 @@ public class CustomerRepositoryImp implements CustomerRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    // Get all customers
     @Override
     public List<Customer> findAllCustomers() {
         String hql = "FROM Customer";
@@ -22,30 +21,30 @@ public class CustomerRepositoryImp implements CustomerRepository {
         return customer;
     }
 
-    // Get customer by ID
-//    @Override
-//    public Customer findCustomerById(int customerId) {
-//        return entityManager.find(Customer.class, customerId);
-//    }
+    //Get customer by ID
+    @Override
+    public Customer findCustomerById(int customerId) {
+        return entityManager.find(Customer.class, customerId);
+    }
 
-    // Insert or update customer
-//    @Override
-//    @Transactional
-//    public void saveCustomer(Customer customer) {
-//        if (customer.getCustomerId() == 0) {
-//            entityManager.persist(customer);  // Insert
-//        } else {
-//            entityManager.merge(customer);    // Update
-//        }
-//    }
-//
-//    // Delete customer by ID
-//    @Override
-//    @Transactional
-//    public void deleteCustomer(int customerId) {
-//        Customer customer = findCustomerById(customerId);
-//        if (customer != null) {
-//            entityManager.remove(customer);  // Delete
-//        }
-//    }
+    //Insert or update customer
+    @Override
+    @Transactional
+    public void saveCustomer(Customer customer) {
+        if (customer.getCustomerId() == 0) {
+            entityManager.persist(customer);
+        } else {
+            entityManager.merge(customer);
+        }
+    }
+
+    // Delete customer by ID
+    @Override
+    @Transactional
+    public void deleteCustomer(int customerId) {
+        Customer customer = findCustomerById(customerId);
+        if (customer != null) {
+            entityManager.remove(customer);
+        }
+    }
 }

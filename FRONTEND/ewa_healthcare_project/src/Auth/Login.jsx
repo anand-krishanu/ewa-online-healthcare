@@ -20,7 +20,7 @@ export default function LoginPage() {
         </button>
         <div className="register">
           <p>
-            Don't have an account? <Link to="/signup">Register</Link>
+            Don't have an account? <Link to="/register">Register</Link>
           </p>
         </div>
       </div>

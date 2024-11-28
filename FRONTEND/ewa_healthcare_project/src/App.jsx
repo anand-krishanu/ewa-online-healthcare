@@ -8,6 +8,7 @@ import LoginPage from './Auth/Login';
 import SpecialistList from './Specialist/SpecialistList';
 import Booking from './Booking/Booking';
 import ProfilePage from './Profile/Profile';
+import BookingForm from './Booking/BookingForm';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route exact path='/allSpecialists' element = {<SpecialistList />} />
           <Route exact path='/booking' element = {< Booking />} />
           <Route exact path='/profile' element = {<ProfilePage />} />
+          <Route exact path='/bookingForm' element = {<BookingForm />} />
         </Routes>
       </Router>
     </div>

@@ -1,55 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Booking.css";
 
 export default function Booking() {
-  const [role, setRole] = useState("Customer"); // Dynamically toggled role
+  const [role, setRole] = useState("Customer"); // Default role
+  const [bookings, setBookings] = useState([]); // To hold booking data
+  const [userId, setUserId] = useState(1); // Example user ID
+  const [loading, setLoading] = useState(false); // To manage loading state
+  const [error, setError] = useState(""); // To manage error state
 
-  // Hardcoded bookings data
-  const sampleBookings = [
-    {
-      id: 1,
-      title: "Doctor's Appointment",
-      date: "2024-11-28",
-      time: "10:00 AM",
-      location: "Healthcare Center A",
-      status: "Scheduled",
-    },
-    {
-      id: 2,
-      title: "Yoga Session",
-      date: "2024-12-01",
-      time: "8:00 AM",
-      location: "Fitness Club B",
-      status: "Completed",
-    },
-    {
-      id: 3,
-      title: "Business Meeting",
-      date: "2024-11-30",
-      time: "1:00 PM",
-      location: "Office Park C",
-      status: "In Progress",
-    },
-  ];
-
-  // For testing API later
-  /*
+  // Fetch bookings when the role or userId changes
   useEffect(() => {
-    const fetchBookings = async () => {
-      const response = await fetch(`/api/bookings?role=${role}`);
-      const data = await response.json();
-      setBookings(data);
-    };
     fetchBookings();
-  }, [role]);
-  */
+  }, [role, userId]);
 
-  const handleCancel = (id) => {
-    alert(`Booking ID ${id} cancelled.`);
+  // Fetch bookings from the backend based on role and userId
+  const fetchBookings = async () => {
+    setLoading(true);
+    setError(""); // Reset the error state
+    try {
+      const response = await fetch(`/api/bookings?role=${role}&userId=${userId}`);
+      const data = await response.json();
+      setBookings(data); // Update state with booking data
+    } catch (err) {
+      setError("Failed to fetch bookings. Please try again.");
+      console.error(err);
+    } finally {
+      setLoading(false); // Stop loading indicator
+    }
   };
 
-  const handleComplete = (id) => {
-    alert(`Booking ID ${id} marked as completed.`);
+  // Handle cancel booking action
+  const handleCancel = async (id) => {
+    try {
+      const response = await fetch(`/api/bookings/${id}/cancel`, { method: "PUT" });
+      if (response.ok) {
+        alert(`Booking ID ${id} cancelled.`);
+        fetchBookings(); // Refresh bookings list
+      } else {
+        alert("Failed to cancel booking.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Handle mark as complete action
+  const handleComplete = async (id) => {
+    try {
+      const response = await fetch(`/api/bookings/${id}/complete`, { method: "PUT" });
+      if (response.ok) {
+        alert(`Booking ID ${id} marked as completed.`);
+        fetchBookings(); // Refresh bookings list
+      } else {
+        alert("Failed to complete booking.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -65,8 +72,12 @@ export default function Booking() {
         </div>
       </header>
       <main>
-        {sampleBookings.length > 0 ? (
-          sampleBookings.map((booking) => (
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p className="error">{error}</p>
+        ) : bookings.length > 0 ? (
+          bookings.map((booking) => (
             <div className="booking-card" key={booking.id}>
               <h3>{booking.title}</h3>
               <p>

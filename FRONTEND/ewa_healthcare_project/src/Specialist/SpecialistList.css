@@ -1,37 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 
 body {
-    font-family: 'Maven Pro', sans-serif
-}
-
-body {
-    background-color: #fff
+    font-family: 'Maven Pro', sans-serif;
+    background-color: #fff;
 }
 
 .add {
-    border-radius: 20px
+    border-radius: 20px;
 }
 
 .card {
     border: none;
     border-radius: 10px;
-    transition: all 1s;
-    cursor: pointer
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .card:hover {
-    -webkit-box-shadow: 3px 5px 17px -4px #777777;
-    box-shadow: 3px 5px 17px -4px #777777
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 3px 5px 17px -4px #777777;
 }
 
 .ratings i {
-    color: green
+    color: green;
 }
 
-.apointment button {
+.appointment button {
     border-radius: 20px;
     background-color: #eee;
     color: #000;
     border-color: #eee;
-    font-size: 13px
+    font-size: 13px;
+    padding: 10px 20px; /* Add padding for a more clickable button */
+    transition: background-color 0.3s ease;
+}
+
+.appointment button:hover {
+    background-color: #dcdcdc; /* Change background on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px; /* Add padding to the container on smaller screens */
+    }
+
+    .col-md-3 {
+        flex: 0 0 50%; /* Show two cards per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .col-md-3 {
+        flex: 0 0 100%; /* Show one card per row on very small screens */
+    }
+
+    .card {
+        margin-bottom: 20px; /* Add some space between cards */
+    }
 }
