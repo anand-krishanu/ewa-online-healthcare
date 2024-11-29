@@ -13,6 +13,7 @@ public class CustomerRepositoryImp implements CustomerRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
+    //All Customers
     @Override
     public List<Customer> findAllCustomers() {
         String hql = "FROM Customer";

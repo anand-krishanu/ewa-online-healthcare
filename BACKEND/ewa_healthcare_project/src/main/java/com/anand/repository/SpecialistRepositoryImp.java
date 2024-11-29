@@ -14,10 +14,10 @@ public class SpecialistRepositoryImp implements SpecialistRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    // Find all specialists
+    // All specialists
     @Override
     public List<Specialist> findAllSpecialists() {
-        String hql = "FROM Specialist";  // HQL or JPQL query to fetch all specialists
+        String hql = "FROM Specialist";
         List<Specialist> specialists = entityManager.createQuery(hql, Specialist.class).getResultList();
         System.out.println("Fetched Specialists: " + specialists.size());
         return specialists;
@@ -34,10 +34,8 @@ public class SpecialistRepositoryImp implements SpecialistRepository {
     @Transactional
     public void saveSpecialist(Specialist specialist) {
         if (specialist.getSpecialistId() == 0) {
-            // If specialist has no ID, it's a new entry, persist it
             entityManager.persist(specialist);
         } else {
-            // If specialist has an ID, update the existing entry
             entityManager.merge(specialist);
         }
     }
@@ -48,7 +46,6 @@ public class SpecialistRepositoryImp implements SpecialistRepository {
     public void deleteSpecialist(int specialistId) {
         Specialist specialist = findSpecialistById(specialistId);
         if (specialist != null) {
-            // If specialist exists, remove it
             entityManager.remove(specialist);
         }
     }

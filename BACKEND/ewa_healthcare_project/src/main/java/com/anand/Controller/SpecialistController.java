@@ -1,6 +1,5 @@
 package com.anand.Controller;
 
-import com.anand.Entity.Customer;
 import com.anand.Entity.Specialist;
 import com.anand.repository.SpecialistRepository;
 import org.springframework.beans.factory.annotation.Autowired;

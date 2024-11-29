@@ -30,7 +30,6 @@ public class BookingRepositoryImp implements BookingRepository {
 
     @Override
     public List<Booking> getBookingsBySpecialistName(String specialistName) {
-        // Updated the query to use specialistName instead of specialistId
         String query = "SELECT b FROM Booking b WHERE b.specialistName = :specialistName";
         return entityManager.createQuery(query, Booking.class)
                 .setParameter("specialistName", specialistName)

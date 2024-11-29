@@ -35,7 +35,6 @@ public class DataBaseConfig {
         emf.setDataSource(dataSource());
         emf.setPackagesToScan("com.anand.Entity");
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-//        emf.setEntityManagerFactoryInterface(jakarta.persistence.EntityManagerFactory.class);
 
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");

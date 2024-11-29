@@ -15,8 +15,8 @@ public class Booking {
     @Column(name = "customer_id", nullable = false)
     private int customerId;
 
-    @Column(name = "specialist_name", nullable = false)  // Changed to store specialist's name
-    private String specialistName;  // Changed from specialistId to specialistName
+    @Column(name = "specialist_name", nullable = false)
+    private String specialistName;
 
     @Column(name = "appointment_date", nullable = false)
     private LocalDateTime appointmentDate;
